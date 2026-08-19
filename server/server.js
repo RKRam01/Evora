@@ -2,8 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const dns = require('node:dns');
 
 dotenv.config();
+
+// Use public DNS for MongoDB Atlas SRV records. Some local DNS resolvers block
+// SRV queries, which prevents mongodb+srv connection strings from resolving.
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');
