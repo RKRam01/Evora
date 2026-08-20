@@ -17,8 +17,15 @@ const bookingRoutes = require('./routes/bookings');
 const app = express();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(',').map(origin => origin.trim())
+  : true;
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
+
+app.get('/health', (_req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
 
 // Routes
 app.use('/api/auth', authRoutes);

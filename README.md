@@ -81,3 +81,15 @@ cd client
 npm run dev
 ```
 *(Client will run on a local port provided by Vite, typically `http://localhost:5173`)*
+
+## Deploy to Render
+
+The repository includes `render.yaml` for deploying the API and frontend as separate Render services.
+
+1. Push the repository to GitHub.
+2. In Render, choose **New > Blueprint** and select this repository.
+3. Set the API service variables: `MONGO_URI`, `JWT_SECRET`, `EMAIL_USER`, `EMAIL_PASS`, and `CLIENT_URL`.
+4. Set the frontend variable `VITE_API_URL` to the deployed API URL followed by `/api`.
+5. Replace `CLIENT_URL` with the deployed frontend URL, then redeploy the API.
+
+For local configuration, copy `server/.env.example` to `server/.env` and `client/.env.example` to `client/.env`.
