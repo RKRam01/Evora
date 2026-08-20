@@ -1,7 +1,7 @@
 {
-    "name": "eventora-server",
+  "name": "EVORA-server",
     "version": "1.0.0",
-    "description": "Eventora Backend",
+    "description": "EVORA Backend",
     "main": "server.js",
     "author": "Rahul Kumar Ram",
     "scripts": {

@@ -58,17 +58,17 @@ const EventDetail = () => {
         }
     };
 
-    if (loading) return <div className="text-center py-20 text-xl font-semibold">Loading...</div>;
-    if (error && !event) return <div className="text-center py-20 text-xl text-red-500">{error || 'Event not found'}</div>;
+    if (loading) return <div className="text-center py-20 text-xl font-semibold text-gray-500">Loading...</div>;
+    if (error && !event) return <div className="text-center py-20 text-xl text-purple-500">{error || 'Event not found'}</div>;
 
     const isSoldOut = event.availableSeats <= 0;
 
     return (
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden mt-8">
+        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden mt-8 border border-blue-100">
             {event.image ? (
                 <img src={event.image} alt={event.title} className="w-full h-80 object-cover" />
             ) : (
-                <div className="w-full h-64 bg-gray-900 flex items-center justify-center text-white/50 text-6xl font-black uppercase tracking-widest">
+                <div className="w-full h-64 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white/50 text-6xl font-black uppercase tracking-widest">
                     {event.category}
                 </div>
             )}
@@ -76,56 +76,56 @@ const EventDetail = () => {
             <div className="p-8 md:p-12">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-6">
                     <div>
-                        <div className="inline-block bg-gray-200 text-gray-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-3">
+                        <div className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-3 border border-blue-200">
                             {event.category}
                         </div>
-                        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{event.title}</h1>
-                        <p className="text-gray-600 text-lg leading-relaxed mb-6">{event.description}</p>
+                        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">{event.title}</h1>
+                        <p className="text-gray-700 text-lg leading-relaxed mb-6">{event.description}</p>
                     </div>
 
-                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 min-w-[300px] w-full md:w-auto shrink-0 shadow-sm">
-                        <h3 className="text-xl font-bold text-gray-800 mb-6">Booking Details</h3>
+                    <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-200 min-w-[300px] w-full md:w-auto shrink-0 shadow-md">
+                        <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">Booking Details</h3>
 
                         <div className="space-y-4 mb-8">
-                            <div className="flex items-center gap-4 text-gray-600">
-                                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-900 shrink-0">
+                            <div className="flex items-center gap-4 text-gray-700">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center text-white shrink-0">
                                     <FaMoneyBillWave />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-semibold text-gray-400 uppercase">Ticket Price</p>
-                                    <p className="font-bold text-gray-800 text-lg">{event.ticketPrice === 0 ? <span className="text-green-500">Free</span> : `₹${event.ticketPrice}`}</p>
+                                    <p className="text-sm font-semibold text-gray-500 uppercase">Ticket Price</p>
+                                    <p className="font-bold text-gray-900 text-lg">{event.ticketPrice === 0 ? <span className="text-blue-600">Free</span> : `₹${event.ticketPrice}`}</p>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-4 text-gray-600">
-                                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-900 shrink-0">
+                            <div className="flex items-center gap-4 text-gray-700">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 flex items-center justify-center text-white shrink-0">
                                     <FaChair />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-semibold text-gray-400 uppercase">Availability</p>
-                                    <p className="font-bold text-gray-800">
-                                        <span className={event.availableSeats < 10 ? 'text-orange-500' : ''}>{event.availableSeats}</span> / {event.totalSeats}
+                                    <p className="text-sm font-semibold text-gray-500 uppercase">Availability</p>
+                                    <p className="font-bold text-gray-900">
+                                        <span className={event.availableSeats < 10 ? 'text-purple-600' : ''}>{event.availableSeats}</span> / {event.totalSeats}
                                     </p>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-4 text-gray-600">
-                                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-900 shrink-0">
+                            <div className="flex items-center gap-4 text-gray-700">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white shrink-0">
                                     <FaCalendarAlt />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-semibold text-gray-400 uppercase">Date</p>
-                                    <p className="font-bold text-gray-800">{new Date(event.date).toLocaleDateString()}</p>
+                                    <p className="text-sm font-semibold text-gray-500 uppercase">Date</p>
+                                    <p className="font-bold text-gray-900">{new Date(event.date).toLocaleDateString()}</p>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-4 text-gray-600">
-                                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-900 shrink-0">
+                            <div className="flex items-center gap-4 text-gray-700">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center text-white shrink-0">
                                     <FaMapMarkerAlt />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-semibold text-gray-400 uppercase">Location</p>
-                                    <p className="font-bold text-gray-800">{event.location}</p>
+                                    <p className="text-sm font-semibold text-gray-500 uppercase">Location</p>
+                                    <p className="font-bold text-gray-900">{event.location}</p>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@ const EventDetail = () => {
                                     type="text"
                                     required
                                     placeholder="6-digit code"
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-700 transition shadow-sm font-bold tracking-widest text-center text-lg"
+                                    className="w-full px-4 py-3 rounded-xl border border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition shadow-sm font-bold tracking-widest text-center text-lg"
                                     value={otp}
                                     onChange={(e) => setOtp(e.target.value)}
                                     maxLength="6"
@@ -150,13 +150,13 @@ const EventDetail = () => {
                             disabled={isSoldOut || bookingLoading || (showOTP && !otp)}
                             className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition shadow-lg ${isSoldOut || (successMsg && !showOTP)
                                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                                : 'bg-gray-900 hover:bg-black text-white hover:shadow-xl hover:-translate-y-1'
+                                : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white hover:shadow-xl hover:-translate-y-1'
                                 }`}
                         >
                             {bookingLoading ? 'Processing...' : (showOTP ? 'Verify OTP & Confirm' : (successMsg && !showOTP ? 'Request Sent' : (isSoldOut ? 'Sold Out' : 'Confirm Registration')))}
                         </button>
-                        {error && <p className="text-red-500 mt-4 text-center font-medium bg-red-50 p-2 rounded">{error}</p>}
-                        {successMsg && <p className="text-green-600 mt-4 text-center font-medium bg-green-50 p-2 rounded">{successMsg}</p>}
+                        {error && <p className="text-purple-600 mt-4 text-center font-medium bg-purple-50 p-2 rounded border border-purple-200">{error}</p>}
+                        {successMsg && <p className="text-blue-600 mt-4 text-center font-medium bg-blue-50 p-2 rounded border border-blue-200">{successMsg}</p>}
                     </div>
                 </div>
             </div>
